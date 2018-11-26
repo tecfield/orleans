@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/github/sergeybykov/orleans-2/src",
+  "source_base_path": "C:/GitHub/sergeybykov/orleans-2/src",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -3012,7 +3012,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/tutorials_and_samples/Adventure.html",
-          "hash": "qRfeQhiy5baMr/F9cQarqA=="
+          "hash": "+ZX5ZD6RTnvQO7CpdXOqow=="
         }
       },
       "is_incremental": false,
