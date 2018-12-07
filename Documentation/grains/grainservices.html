@@ -150,7 +150,7 @@ It ends up calling this bit: <strong>orleans/src/Orleans.Runtime/Services/GrainS
 <p> <code>return services.AddSingleton&lt;IGrainService&gt;(sp =&gt; GrainServiceFactory(grainServiceType, sp));</code></p>
 <p>Basically, the silo fetches <code>IGrainService</code> types from the service provider when starting: <strong>orleans/src/Orleans.Runtime/Silo/Silo.cs</strong>
  <code>var grainServices = this.Services.GetServices&lt;IGrainService&gt;();</code></p>
-<p>The <code>Orleans.Runtime</code> Nuget package should be referenced by the Grainservice project.</p>
+<p>The <code>Microsoft.Orleans.OrleansRuntime</code> Nuget package should be referenced by the Grainservice project.</p>
 <h3 id="note-2">Note 2</h3>
 <p>In order for this to work you have to register both the Service and its Client.
 The code looks something like this:</p>
