@@ -75,11 +75,11 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h3 id="setup">Setup</h3>
+<h1 id="setup">Setup</h1>
 
-<p>Before you write code to implement a grain class, create a new Class Library project targeting .NET 4.6.1 or higher in Visual Studio and add the <code>Microsoft.Orleans.OrleansCodeGenerator.Build</code> NuGet package to it.</p>
-<pre><code>PM&gt; Install-Package Microsoft.Orleans.OrleansCodeGenerator.Build
-</code></pre><h3 id="grain-interfaces-and-classes">Grain Interfaces and Classes</h3>
+<p>Before you write code to implement a grain class, create a new Class Library project targeting .NET 4.6.1 or higher in Visual Studio and add the <code>Microsoft.Orleans.CodeGenerator.MSBuild</code> NuGet package to it.</p>
+<pre><code class="lang-powershell">PM&gt; Install-Package Microsoft.Orleans.CodeGenerator.MSBuild
+</code></pre><h1 id="grain-interfaces-and-classes">Grain Interfaces and Classes</h1>
 <p>Grains interact with each other and get called from outside by invoking methods declared as part of the respective grain interfaces.
 A grain class implements one or more previously declared grain interfaces.
 All methods of a grain interface must return a <code>Task</code> (for <code>void</code> methods) or a <code>Task&lt;T&gt;</code> (for methods returning values of type <code>T</code>).</p>
@@ -108,7 +108,7 @@ public class PlayerGrain : Grain, IPlayerGrain
     {
        currentGame = game;
        Console.WriteLine(
-           &quot;Player {0} joined game {1}&quot;, 
+           &quot;Player {0} joined game {1}&quot;,
            this.GetPrimaryKey(),
            game.GetPrimaryKey());
 
@@ -127,7 +127,7 @@ public class PlayerGrain : Grain, IPlayerGrain
        return Task.CompletedTask;
    }
 }
-</code></pre><h3 id="returning-values-from-grain-methods">Returning Values from Grain Methods</h3>
+</code></pre><h1 id="returning-values-from-grain-methods">Returning Values from Grain Methods</h1>
 <p>A grain method that returns a value of type <code>T</code> is defined in a grain interface as returning a <code>Task&lt;T&gt;</code>.
 For grain methods not marked with the <code>async</code> keyword, when the return value is available, it is usually returned via the following statement:</p>
 <pre><code class="lang-csharp">public Task&lt;SomeType&gt; GrainMethod1()
@@ -169,15 +169,15 @@ For grain methods not marked with the <code>async</code> keyword, when a &quot;v
     Task task = CallToAsyncAPI();
     return task;
 }
-</code></pre><h3 id="grain-reference">Grain Reference</h3>
+</code></pre><h1 id="grain-reference">Grain Reference</h1>
 <p>A Grain Reference is a proxy object that implements the same grain interface as the corresponding grain class.
 It encapsulates a logical identity (type and unique key) of the target grain.
 A grain reference is what is used for making calls to the target grain.
 Each grain reference is for a single grain (a single instance of the grain class), but one can create multiple independent references for the same grain.</p>
 <p>Since a grain reference represents a logical identity of the target grain, it is independent from the physical location of the grain, and stays valid even after a complete restart of the system.
 Developers can use grain references like any other .NET object.
-It can be passed to a method, used as a method return value, etc., and even saved to persistent storage. </p>
-<p>A grain reference can be obtained by passing the identity of a grain to the <code>GrainFactory.GetGrain&lt;T&gt;(key)</code> method, where <code>T</code> is the grain interface and <code>key</code> is the unique key of the grain within the type. </p>
+It can be passed to a method, used as a method return value, etc., and even saved to persistent storage.</p>
+<p>A grain reference can be obtained by passing the identity of a grain to the <code>GrainFactory.GetGrain&lt;T&gt;(key)</code> method, where <code>T</code> is the grain interface and <code>key</code> is the unique key of the grain within the type.</p>
 <p>The following are examples of how to obtain a grain reference of the <code>IPlayerGrain</code> interface defined above.</p>
 <p>From inside a grain class:</p>
 <pre><code class="lang-csharp">    //construct the grain reference of a specific player
@@ -187,7 +187,7 @@ It can be passed to a method, used as a method return value, etc., and even save
 <pre><code class="lang-csharp">    IPlayerGrain player = GrainClient.GrainFactory.GetGrain&lt;IPlayerGrain&gt;(playerId);
 </code></pre><p>Since 1.5.0:</p>
 <pre><code class="lang-csharp">    IPlayerGrain player = client.GetGrain&lt;IPlayerGrain&gt;(playerId);
-</code></pre><h3 id="grain-method-invocation">Grain Method Invocation</h3>
+</code></pre><h1 id="grain-method-invocation">Grain Method Invocation</h1>
 <p>The Orleans programming model is based on the <a href="https://msdn.microsoft.com/en-us/library/hh191443.aspx">Asynchronous Programming with Async and Await</a>.</p>
 <p>Using the grain reference from the previous example, here&#39;s how one performs a grain method invocation:</p>
 <pre><code class="lang-csharp">//Invoking a grain method asynchronously
@@ -214,7 +214,7 @@ Task joinedTask = Task.WhenAll(tasks);
 await joinedTask;
 
 // Execution of the rest of the method will continue asynchronously after joinedTask is resolve.
-</code></pre><h3 id="virtual-methods">Virtual methods</h3>
+</code></pre><h1 id="virtual-methods">Virtual methods</h1>
 <p>A grain class can optionally override <code>OnActivateAsync</code> and <code>OnDeactivateAsync</code> virtual methods that get invoked by the Orleans runtime upon activation and deactivation of each grain of the class.
 This gives the grain code a chance to perform additional initialization and cleanup operations.
 An exception thrown by <code>OnActivateAsync</code> fails the activation process.

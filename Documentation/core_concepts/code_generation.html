@@ -81,8 +81,14 @@
 <h2 id="enabling-code-generation">Enabling Code Generation</h2>
 <p>Code generation can be performed either when your projects are being built or when your application initializes.</p>
 <h3 id="during-build">During Build</h3>
-<p>The preferred method for performing code generation is at build time. Enable build time code generation by installing the <code>Microsoft.Orleans.OrleansCodeGenerator.Build</code> package into all projects which contain grains, grain interfaces, custom serializers, or types which are sent between grains. Installing this package injects a target into the project which will generate code at build time.</p>
-<p>The <code>Microsoft.Orleans.OrleansCodeGenerator.Build</code> package only supports C# projects. Other languages are supported either using the <code>Microsoft.Orleans.OrleansCodeGenerator</code> package described below, or by creating a C# project which can act as the target for code generated from assemblies written in other languages.</p>
+<p>The preferred method for performing code generation is at build time. Build time code generation could be enabled by using one of the following packages:</p>
+<ul>
+<li><a href="https://www.nuget.org/packages/Microsoft.Orleans.OrleansCodeGenerator.Build/">Microsoft.Orleans.OrleansCodeGenerator.Build</a>. A package that uses Roslyn for code generation and uses .NET Reflection for analysis.</li>
+<li><p><a href="https://www.nuget.org/packages/Microsoft.Orleans.CodeGenerator.MSBuild/">Microsoft.Orleans.CodeGenerator.MSBuild</a>. A new code generation package that leverages Roslyn both for code generation and code analysis. It does not load application binaries and as a result avoids issues caused by clashing dependency versions and differing target frameworks. The new code generator also improves support for incremental builds, which should result in shorter build times.</p>
+<p>One of these packages should be installed into all projects which contain grains, grain interfaces, custom serializers, or types which are sent between grains. Installing a package injects a target into the project which will generate code at build time.</p>
+</li>
+</ul>
+<p>Both packages (<code>Microsoft.Orleans.CodeGenerator.MSBuild</code> and <code>Microsoft.Orleans.OrleansCodeGenerator.Build</code>) only support C# projects. Other languages are supported either using the <code>Microsoft.Orleans.OrleansCodeGenerator</code> package described below, or by creating a C# project which can act as the target for code generated from assemblies written in other languages.</p>
 <p>Additional diagnostics can be emitted at build-time by specifying value for <code>OrleansCodeGenLogLevel</code> in the target project&#39;s <em>csproj</em> file. For example, <code>&lt;OrleansCodeGenLogLevel&gt;Trace&lt;/OrleansCodeGenLogLevel&gt;</code>.</p>
 <h3 id="during-initialization">During Initialization</h3>
 <p>Code generation can be performed during initialization on the client and silo by installing the <code>Microsoft.Orleans.OrleansCodeGenerator</code> package and using the <code>IApplicationPartManager.WithCodeGeneration</code> extension method.</p>
@@ -110,10 +116,10 @@ builder.ConfigureApplicationParts(
 <p>There are cases where generated code can not be included in a particular assembly at build time. For example, this can include shared libraries which do not reference Orleans, assemblies written in languages other than C#, and assemblies which the developer does not have the source code for. In these cases, generated code for those assemblies can be placed into a separate assembly which is referenced during initialization.</p>
 <p>In order to enable this for an assembly:</p>
 <ol>
-<li>Create a C# project</li>
-<li>Install the <code>Microsoft.Orleans.OrleansCodeGenerator.Build</code> package</li>
-<li>Add a reference to the target assembly</li>
-<li>Add <code>[assembly: KnownAssembly(&quot;OtherAssembly&quot;)]</code> at the top level of a C# file</li>
+<li>Create a C# project.</li>
+<li>Install the <code>Microsoft.Orleans.CodeGenerator.MSBuild</code> or the <code>Microsoft.Orleans.OrleansCodeGenerator.Build</code> package.</li>
+<li>Add a reference to the target assembly.</li>
+<li>Add <code>[assembly: KnownAssembly(&quot;OtherAssembly&quot;)]</code> at the top level of a C# file.</li>
 </ol>
 <p>The <code>KnownAssembly</code> attribute instructs the code generator to inspect the specified assembly and generate code for the types within it. The attribute can be used multiple times within a project.</p>
 <p>The generated assembly must then be added to the client/silo during initialization:</p>

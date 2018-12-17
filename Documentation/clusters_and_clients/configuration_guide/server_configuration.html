@@ -140,9 +140,9 @@ Option classes in Orleans follow the <a href="https://docs.microsoft.com/en-us/a
 <li>Silo-to-silo endpoints, used for communication between silos in the same cluster</li>
 <li>Client-to-silo endpoints (or gateway), used for communication between clients and silos in the same cluster</li>
 </ul>
-<p>In the sample, we are using the helper method <code>.ConfigureEndpoints(siloPort: 11111, gatewayPort: 30000)</code> which sets the port used for silo-to-silo communication to <code>11111</code> and and the port for the gateway to <code>30000</code>. 
+<p>In the sample, we are using the helper method <code>.ConfigureEndpoints(siloPort: 11111, gatewayPort: 30000)</code> which sets the port used for silo-to-silo communication to <code>11111</code> and and the port for the gateway to <code>30000</code>.
 This method will detect which interface to listen to.</p>
-<p>This method should be sufficient in most cases, but you can customize it further if you need to. 
+<p>This method should be sufficient in most cases, but you can customize it further if you need to.
 Here is an example of how to use an external IP address with some port-forwarding:</p>
 <pre><code class="lang-csharp">[...]
 .Configure&lt;EndpointOptions&gt;(options =&gt;
@@ -167,10 +167,10 @@ Here is an example of how to use an external IP address with some port-forwardin
     .ConfigureApplicationParts(parts =&gt; parts.AddApplicationPart(typeof(ValueGrain).Assembly).WithReferences())
     [...];
 </code></pre><p>Although this step is not technically required (if not configured, Orleans will scan all assemblies in the current folder), developers are encouraged to configure this.
-This step will help Orleans to load user assemblies and types. 
+This step will help Orleans to load user assemblies and types.
 These assemblies are referred to as Application Parts.
 All Grains, Grain Interfaces, and Serializers are discovered using Application Parts.</p>
-<p>Application Parts are configured using <code>IApplicationPartsManager</code>, which can be accessed using the <code>ConfigureApplicationParts</code> extension method on <code>IClientBuilder</code> and <code>ISiloHostBuilder</code>. 
+<p>Application Parts are configured using <code>IApplicationPartsManager</code>, which can be accessed using the <code>ConfigureApplicationParts</code> extension method on <code>IClientBuilder</code> and <code>ISiloHostBuilder</code>.
 The <code>ConfigureApplicationParts</code> method accepts a delegate, <code>Action&lt;IApplicationPartManager&gt;</code>.</p>
 <p>The following extension methods on <code>IApplicationPartManager</code> support common uses:</p>
 <ul>
@@ -184,9 +184,9 @@ The <code>ConfigureApplicationParts</code> method accepts a delegate, <code>Acti
 <li><code>WithCodeGeneration()</code> generates support code for the added parts and adds it to the part manager. Note that this requires the <code>Microsoft.Orleans.OrleansCodeGenerator</code> package to be installed and is commonly referred to as runtime code generation.</li>
 </ul>
 <p>Type discovery requires that the provided Application Parts include specific attributes.
-Adding the build-time code generation package <code>Microsoft.Orleans.OrleansCodeGenerator.Build</code> to each project containing Grains, Grain Interfaces, or Serializers is the recommended approach for ensuring that these attributes are present.
+Adding the build-time code generation package (<code>Microsoft.Orleans.CodeGenerator.MSBuild</code> or <code>Microsoft.Orleans.OrleansCodeGenerator.Build</code>) to each project containing Grains, Grain Interfaces, or Serializers is the recommended approach for ensuring that these attributes are present.
 Build-time code generation only supports C#.
-For F#, Visual Basic, and other .NET languages, code can be generated during configuration time via the <code>WithCodeGeneration()</code> method described above.</p>
+For F#, Visual Basic, and other .NET languages, code can be generated during configuration time via the <code>WithCodeGeneration()</code> method described above. More info regarding code generation could be found in <a href="../../core_concepts/code_generation.html">the corresponding section</a>.</p>
 </article>
           </div>
           
