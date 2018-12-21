@@ -82,7 +82,7 @@
 </code></pre><h1 id="grain-interfaces-and-classes">Grain Interfaces and Classes</h1>
 <p>Grains interact with each other and get called from outside by invoking methods declared as part of the respective grain interfaces.
 A grain class implements one or more previously declared grain interfaces.
-All methods of a grain interface must return a <code>Task</code> (for <code>void</code> methods) or a <code>Task&lt;T&gt;</code> (for methods returning values of type <code>T</code>).</p>
+All methods of a grain interface must return a <code>Task</code> (for <code>void</code> methods), a <code>Task&lt;T&gt;</code> or a <code>ValueTask&lt;T&gt;</code>(for methods returning values of type <code>T</code>).</p>
 <p>The following is an excerpt from the Orleans version 1.5 Presence Service sample:</p>
 <pre><code class="lang-csharp">//an example of a Grain Interface
 public interface IPlayerGrain : IGrainWithGuidKey
@@ -169,7 +169,8 @@ For grain methods not marked with the <code>async</code> keyword, when a &quot;v
     Task task = CallToAsyncAPI();
     return task;
 }
-</code></pre><h1 id="grain-reference">Grain Reference</h1>
+</code></pre><p><code>ValueTask&lt;T&gt;</code> can be used instead of <code>Task&lt;T&gt;</code></p>
+<h3 id="grain-reference">Grain Reference</h3>
 <p>A Grain Reference is a proxy object that implements the same grain interface as the corresponding grain class.
 It encapsulates a logical identity (type and unique key) of the target grain.
 A grain reference is what is used for making calls to the target grain.
@@ -183,13 +184,10 @@ It can be passed to a method, used as a method return value, etc., and even save
 <pre><code class="lang-csharp">    //construct the grain reference of a specific player
     IPlayerGrain player = GrainFactory.GetGrain&lt;IPlayerGrain&gt;(playerId);
 </code></pre><p>From Orleans Client code.</p>
-<p>Prior to 1.5.0:</p>
-<pre><code class="lang-csharp">    IPlayerGrain player = GrainClient.GrainFactory.GetGrain&lt;IPlayerGrain&gt;(playerId);
-</code></pre><p>Since 1.5.0:</p>
 <pre><code class="lang-csharp">    IPlayerGrain player = client.GetGrain&lt;IPlayerGrain&gt;(playerId);
-</code></pre><h1 id="grain-method-invocation">Grain Method Invocation</h1>
-<p>The Orleans programming model is based on the <a href="https://msdn.microsoft.com/en-us/library/hh191443.aspx">Asynchronous Programming with Async and Await</a>.</p>
-<p>Using the grain reference from the previous example, here&#39;s how one performs a grain method invocation:</p>
+</code></pre><h3 id="grain-method-invocation">Grain Method Invocation</h3>
+<p>The Orleans programming model is based on <a href="https://docs.microsoft.com/en-us/dotnet/csharp/async">Asynchronous Programming</a>.</p>
+<p>Using the grain reference from the previous example, here&#39;s how to perform a grain method invocation:</p>
 <pre><code class="lang-csharp">//Invoking a grain method asynchronously
 Task joinGameTask = player.JoinGame(this);
 //The await keyword effectively makes the remainder of the method execute asynchronously at a later point (upon completion of the Task being awaited) without blocking the thread.
@@ -214,12 +212,13 @@ Task joinedTask = Task.WhenAll(tasks);
 await joinedTask;
 
 // Execution of the rest of the method will continue asynchronously after joinedTask is resolve.
-</code></pre><h1 id="virtual-methods">Virtual methods</h1>
+</code></pre><h3 id="virtual-methods">Virtual methods</h3>
 <p>A grain class can optionally override <code>OnActivateAsync</code> and <code>OnDeactivateAsync</code> virtual methods that get invoked by the Orleans runtime upon activation and deactivation of each grain of the class.
 This gives the grain code a chance to perform additional initialization and cleanup operations.
 An exception thrown by <code>OnActivateAsync</code> fails the activation process.
 While <code>OnActivateAsync</code>, if overridden, is always called as part of the grain activation process, <code>OnDeactivateAsync</code> is not guaranteed to get called in all situations, for example, in case of a server failure or other abnormal events.
-Because of that, applications should not rely on OnDeactivateAsync for performing critical operations, such as persistence of state changes, and only use it for best effort operations.</p>
+Because of that, applications should not rely on <code>OnDeactivateAsync</code> for performing critical operations such as persistence of state changes.
+They should use it only for best effort operations.</p>
 </article>
           </div>
           
