@@ -93,15 +93,25 @@ In a typical setup, a frontend web server:</p>
 </ul>
 <h3 id="initialization-of-grain-client">Initialization of Grain Client</h3>
 <p>Before a grain client can be used for making calls to grains hosted in an Orleans cluster, it needs to be configured, initialized, and connected to the cluster.</p>
-<p>Configuration is provided via a <code>ClientConfiguration</code> object that contains a hierarchy of configuration properties for programmatically configuring a client.
-There is also a way to configure a client via a XML file, but that option will be deprecated in the future.
-More information is in the <a href="configuration_guide/client_configuration.html">Client Configuration guide</a>.
-Here we will simply use a helper method that creates a configuration object hardcoded for connecting to a local silo running as <code>localhost</code>.</p>
-<pre><code class="lang-csharp">ClientConfiguration clientConfig = ClientConfiguration.LocalhostSilo(); 
-</code></pre><p>Once we have a configuration object, we can build a client via the <code>ClientBuilder</code> class.</p>
-<pre><code class="lang-csharp">IClusterClient client = new ClientBuilder().UseConfiguration(clientConfig).Build();
+<p>Configuration is provided via  <code>ClientBuilder</code> and a number of supplemental option classes that contain a hierarchy of configuration properties for programmatically configuring a client.</p>
+<p>More information can be in the <a href="configuration_guide/client_configuration.html">Client Configuration guide</a>.</p>
+<p>Example of a client configuration:</p>
+<pre><code class="lang-csharp">
+var client = new ClientBuilder()
+    // Clustering information
+    .Configure&lt;ClusterOptions&gt;(options =&gt;
+    {
+        options.ClusterId = &quot;my-first-cluster&quot;;
+        options.ServiceId = &quot;MyOrleansService&quot;;
+    })
+    // Clustering provider
+    .UseAzureStorageClustering(options =&gt; options.ConnectionString = connectionString)
+    // Application parts: just reference one of the grain interfaces that we use
+    .ConfigureApplicationParts(parts =&gt; parts.AddApplicationPart(typeof(IValueGrain).Assembly))
+    .Build();
 </code></pre><p>Lastly, we need to call <code>Connect()</code> method on the constructed client object to make it connect to the Orleans cluster. It&#39;s an asynchronous method that returns a <code>Task</code>. So we need to wait for its completion with an <code>await</code> or <code>.Wait()</code>.</p>
-<pre><code class="lang-csharp">await client.Connect(); 
+<pre><code class="lang-csharp">
+await client.Connect();
 </code></pre><h3 id="making-calls-to-grains">Making Calls to Grains</h3>
 <p>Making calls to grain from a client is really no different from <a href="/grains/developing_a_grain.md">making such calls from within grain code</a>.
 The same <code>GetGrain&lt;T&gt;(key)</code> method, where <code>T</code> is the target grain interface, is used in both cases <a href="/grains/developing_a_grain.md#grain-reference">to obtain grain references</a>.
