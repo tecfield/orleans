@@ -77,9 +77,11 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="setup">Setup</h1>
 
-<p>Before you write code to implement a grain class, create a new Class Library project targeting .NET 4.6.1 or higher in Visual Studio and add the <code>Microsoft.Orleans.CodeGenerator.MSBuild</code> NuGet package to it.</p>
-<pre><code class="lang-powershell">PM&gt; Install-Package Microsoft.Orleans.CodeGenerator.MSBuild
-</code></pre><h1 id="grain-interfaces-and-classes">Grain Interfaces and Classes</h1>
+<p>Before you write code to implement a grain class, create a new Class Library project targeting .NET Standard (preferred) or .NET Framework 4.6.1 or higher (if you cannot use .NET Standard due to dependencies).
+Grain interfaces and grain classes can be defined in the same Class Library project or in two different projects for better separation of interfaces from implementation.
+In either case, the projects need to reference <code>Microsoft.Orleans.Core.Abstractions</code> and <code>Microsoft.Orleans.CodeGenerator.MSBuild</code> NuGet packages.</p>
+<p>For more thorough instructions, see the <a href="../tutorials_and_samples/tutorial_1.html#project-setup">Project Setup</a> section of <a href="../tutorials_and_samples/tutorial_1.html">Tutorial One – Orleans Basics</a>.</p>
+<h1 id="grain-interfaces-and-classes">Grain Interfaces and Classes</h1>
 <p>Grains interact with each other and get called from outside by invoking methods declared as part of the respective grain interfaces.
 A grain class implements one or more previously declared grain interfaces.
 All methods of a grain interface must return a <code>Task</code> (for <code>void</code> methods), a <code>Task&lt;T&gt;</code> or a <code>ValueTask&lt;T&gt;</code>(for methods returning values of type <code>T</code>).</p>
