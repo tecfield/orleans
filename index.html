@@ -59,7 +59,6 @@
 }
 </style>
 
-
 <div class="jumbotron">
     <div class="container">
       <img src="Images/logo.svg" class="main_logo">
@@ -87,9 +86,11 @@ This section contains information about the fundamental components of Orleans.</
 This section contains in-depth information about grains.</p>
 <h3 id="clusters-and-clientsdocumentationclustersandclientsindexmd"><a href="Documentation/clusters_and_clients/index.html">Clusters and Clients</a></h3>
 <p>The term &quot;Client&quot; or sometimes &quot;Grain Client&quot; is used for application code that interacts with grains but itself is not part of a grain logic. Client code runs outside of the cluster of Orleans servers called silos where grains are hosted. Hence, a client acts as a connector or conduit to the cluster and to all grains of the application.
-Go here to learn more about clusters and clients, specifically. </p>
+Go here to learn more about clusters and clients, specifically.</p>
 <h3 id="deploymentdocumentationdeploymentindexmd"><a href="Documentation/deployment/index.html">Deployment</a></h3>
 <p>A typical Orleans application consists of a cluster of server processes (silos) where grains live, and a set of client processes, usually web servers, that receive external requests, turn them into grain method calls, and return results back. Hence, the first thing one needs to do to run an Orleans application is to start a cluster of silos.</p>
+<h3 id="implementation-detailsdocumentationimplementationindexmd"><a href="Documentation/implementation/index.html">Implementation Details</a></h3>
+<p>This section has information about <a href="Documentation/implementation/orleans_lifecycle.html">Orleans Lifecycle</a>, [Messaging Delivery Guarantees]Documentation/implementation/messaging_delivery_guarantees.md), <a href="Documentation/implementation/scheduler.html">Scheduler</a>, <a href="Documentation/implementation/cluster_management.html">Cluster Management</a>,  <a href="Documentation/implementation/streams_implementation.html">Streams Implementation</a>, and <a href="Documentation/implementation/load_balancing.html">Load Balancing</a>.</p>
 <h3 id="streamingdocumentationstreamingindexmd"><a href="Documentation/streaming/index.html">Streaming</a></h3>
 <p>Streaming extensions provide a set of abstractions and APIs that make thinking about and working with streams simpler and more robust. Streaming extensions allow developers to write reactive applications that operate on a sequence of events in a structured way.</p>
 <h3 id="tutorials-and-samplesdocumentationtutorialsandsamplesindexmd"><a href="Documentation/tutorials_and_samples/index.html">Tutorials and Samples</a></h3>

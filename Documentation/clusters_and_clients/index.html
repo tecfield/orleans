@@ -156,10 +156,18 @@ So it is a responsibility of the application code to build a higher level reliab
             try
 
             {
-                // Connect to local silo
-                var config = ClientConfiguration.LocalhostSilo();
-                var client = new ClientBuilder().UseConfiguration(config).Build();
-                await client.Connect();
+            var client = new ClientBuilder()
+                // Clustering information
+                .Configure&lt;ClusterOptions&gt;(options =&gt;
+                {
+                    options.ClusterId = &quot;my-first-cluster&quot;;
+                    options.ServiceId = &quot;MyOrleansService&quot;;
+                })
+                // Clustering provider
+                .UseAzureStorageClustering(options =&gt; options.ConnectionString = connectionString)
+                // Application parts: just reference one of the grain interfaces that we use
+                .ConfigureApplicationParts(parts =&gt; parts.AddApplicationPart(typeof(IValueGrain).Assembly))
+                .Build();
 
                 // Hardcoded player ID
                 Guid playerId = new Guid(&quot;{2349992C-860A-4EDA-9590-000000000006}&quot;);

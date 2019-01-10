@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/github/sergeybykov/orleans/src",
+  "source_base_path": "C:/github/sergeybykov/orleans-2/src",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -1859,7 +1859,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/clusters_and_clients/configuration_guide/client_configuration.html",
-          "hash": "azUW7o98SV9HM6fljEPgHQ=="
+          "hash": "EQhY+h8eILeT2Gr9vDPotg=="
         }
       },
       "is_incremental": false,
@@ -2025,7 +2025,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/clusters_and_clients/index.html",
-          "hash": "ViEmEG7P6GjyUJQVRXRpfw=="
+          "hash": "dfcUCPLIytg61qo6/nj3ZQ=="
         }
       },
       "is_incremental": false,
@@ -2074,6 +2074,18 @@
         ".html": {
           "relative_path": "Documentation/clusters_and_clients/powershell_client.html",
           "hash": "SligVCd4MlQTMEO6nBAeYw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/clusters_and_clients/silo_lifecycle.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/clusters_and_clients/silo_lifecycle.html",
+          "hash": "g2HUMl7PQswhB7sgvX2pTw=="
         }
       },
       "is_incremental": false,
@@ -2521,6 +2533,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "Documentation/grains/grain_lifecycle.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/grains/grain_lifecycle.html",
+          "hash": "bvCJpsl7vH2dhjIdXCq5kg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "Documentation/grains/grain_persistence/index.md",
       "output": {
         ".html": {
@@ -2645,7 +2669,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/grains/transactions.html",
-          "hash": "Z7ENV3uzORKiGTApfSNotQ=="
+          "hash": "tDQjIYaYkg+Av6UpQAjd4A=="
         }
       },
       "is_incremental": false,
@@ -2742,6 +2766,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "Documentation/implementation/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/implementation/index.html",
+          "hash": "v3arpQBgPOH+Hdepayds6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "Documentation/implementation/load_balancing.md",
       "output": {
         ".html": {
@@ -2758,7 +2794,19 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/implementation/messaging_delivery_guarantees.html",
-          "hash": "0UjuRfU9/BSi2LA4Uz0lkQ=="
+          "hash": "iD83Wn6X31tdJEUN3PGryQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/implementation/orleans_lifecycle.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/implementation/orleans_lifecycle.html",
+          "hash": "vzzthDn86cg6zx6xZxVQBw=="
         }
       },
       "is_incremental": false,
@@ -2806,7 +2854,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/index.html",
-          "hash": "nda3YQfsz2qoALizgBkTaw=="
+          "hash": "fm/bTlCFN8Y8Xevluayq1A=="
         }
       },
       "is_incremental": false,
@@ -3022,7 +3070,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/toc.html",
-          "hash": "qtEnjTboZKqdbH3Z4FQVeA=="
+          "hash": "O0r7EFQTkzUkWBRAFXLUTg=="
         }
       },
       "is_incremental": false,
@@ -3562,7 +3610,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "mMRL6lSHlMnh2JptEAU8QA=="
+          "hash": "66BYhXTesL0AApVhRMLadQ=="
         }
       },
       "is_incremental": false,
@@ -3589,14 +3637,14 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "ResourceDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ConceptualDocumentProcessor": {
