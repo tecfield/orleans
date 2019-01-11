@@ -92,7 +92,7 @@ To use transaction-specific storage, the user can configure their silo using any
 <p>Example:</p>
 <pre><code class="lang-csharp">
 var builder = new SiloHostBuilder()
-    .AddAzureTableTransactionalStateStorage(&quot;TransactionStore, options =&gt;
+    .AddAzureTableTransactionalStateStorage(&quot;TransactionStore&quot;, options =&gt;
     {
         options.ConnectionString = ”YOUR_STORAGE_CONNECTION_STRING”);
     })
