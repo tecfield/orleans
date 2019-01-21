@@ -95,7 +95,7 @@ but for the sake of a remark, not all are listed, such as <a href="https://downl
 <p>In many cases, the servers and databases are hosted by a third party in contractual relation with the client. It is not an unusual
 situation the hosting environment is virtualized and performance fluctuates due to unforeseen factors, such as noisy neighbors or faulty hardware. It may
 not be possible to alter and re-deploy either Orleans binaries (contractual reasons) or even application binaries, but usually it is possible to tweak the
-database deployment. Altering <em>standard components</em>, such as Orleans binaries, requires a lenghtier procedure as to what is afforded in a given situation.</p>
+database deployment. Altering <em>standard components</em>, such as Orleans binaries, requires a lengthier procedure as to what is afforded in a given situation.</p>
 <h4 id="3-allow-one-to-make-use-of-vendor-and-version-specific-abilities">3. <strong>Allow one to make use of vendor and version specific abilities</strong></h4>
 <p>Vendors have implemented different extensions and features within their products. It is sensible to make use of these features when they are available.
 These features are such as <a href="https://www.postgresql.org/about/news/1636/">native UPSERT</a> or <a href="https://www.pipelinedb.com/">PipelineDB</a> in PostgreSQL,
@@ -139,7 +139,7 @@ Vendor and deployment specific tuning is allowed and contributions are encourage
 <li>The implementation across vendor specific scripts <strong>should</strong> preserve the constraint names.
 This simplifies troubleshooting by virtue of uniform naming across concrete implementations.</li>
 <li><strong>Version</strong> &ndash; or <strong>ETag</strong> in application code &ndash; for Orleans represents a unique version.
-The type of its actual implementation is not important as long as it represents a unique version. In the implementation Orleans code excepts a signed 32-bit integer.</li>
+The type of its actual implementation is not important as long as it represents a unique version. In the implementation, Orleans code expects a signed 32-bit integer.</li>
 <li>For the sake of being explicit and removing ambiguity, Orleans expects some queries to return either <strong>TRUE as &gt; 0</strong> value
 or <strong>FALSE as = 0</strong> value. That is, affected rows or such does not matter. If an error is raised or an exception is thrown
 the query <strong>must</strong> ensure the entire transaction is rolled back and may either return FALSE or propagate the exception.</li>
@@ -164,8 +164,8 @@ or perhaps inserting statistics data via SQL Server to Hadoop or even <a href="h
 <h2 id="guidelines-for-adding-new-adonet-providers">Guidelines for adding new ADO.NET providers</h2>
 <ol>
 <li>Add a new database setup script according to the <a href="#realization-of-the-goals">Realization of the goals</a> section above.</li>
-<li>Add the vendor ADO invariant name to <a href="https://github.com/dotnet/orleans/blob/master/src/OrleansSQLUtils/Storage/AdoNetInvariants.cs#L34">AdoNetInvariants</a> and ADO.NET provider specific data to <a href="https://github.com/dotnet/orleans/blob/master/src/OrleansSQLUtils/Storage/DbConstantsStore.cs">DbConstantsStore</a>. These are (potentially) used in some query operations. e.g. to select the correct statistics insert mode (i.e. the <code>UNION ALL</code> with or without <code>FROM DUAL</code>).</li>
-<li>Orleans has comprehensive tests for all system stores: membership, reminders and statistics. Adding tests for the new database script is done by copy-pasting existing test classes and changing the ADO invariant name. Also, derive from <a href="https://github.com/dotnet/orleans/blob/master/test/TesterSQLUtils/RelationalUtilities/RelationalStorageForTesting.cs">RelationalStorageForTesting</a> in order to define test functionality for the ADO invariant.</li>
+<li>Add the vendor ADO invariant name to <a href="https://github.com/dotnet/orleans/blob/master/src/AdoNet/Shared/Storage/AdoNetInvariants.cs#L34">AdoNetInvariants</a> and ADO.NET provider specific data to <a href="https://github.com/dotnet/orleans/blob/master/src/AdoNet/Shared/Storage/DbConstantsStore.cs">DbConstantsStore</a>. These are (potentially) used in some query operations. e.g. to select the correct statistics insert mode (i.e. the <code>UNION ALL</code> with or without <code>FROM DUAL</code>).</li>
+<li>Orleans has comprehensive tests for all system stores: membership, reminders and statistics. Adding tests for the new database script is done by copy-pasting existing test classes and changing the ADO invariant name. Also, derive from <a href="https://github.com/dotnet/orleans/blob/master/test/Extensions/TesterAdoNet/RelationalUtilities/RelationalStorageForTesting.cs">RelationalStorageForTesting</a> in order to define test functionality for the ADO invariant.</li>
 </ol>
 </article>
           </div>
