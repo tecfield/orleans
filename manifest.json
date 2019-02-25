@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/GitHub/sergeybykov/orleans/src",
+  "source_base_path": "C:/GitHub/sergeybykov/orleans-2/src",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -1907,7 +1907,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/clusters_and_clients/configuration_guide/list_of_options_classes.html",
-          "hash": "PvstePRZ9ODuTlaoCVz5Hg=="
+          "hash": "R32E4HB6Myc6HOEbbBcItw=="
         }
       },
       "is_incremental": false,

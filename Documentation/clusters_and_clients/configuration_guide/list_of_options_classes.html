@@ -159,7 +159,7 @@
 </tr>
 <tr>
 <td><code>LoadSheddingOptions</code></td>
-<td>Settings for load shedding configuration</td>
+<td>Settings for load shedding configuration. Must have a registered implementation of <code>IHostEnvironmentStatistics</code> such as through <code>builder.UsePerfCounterEnvironmentStatistics()</code> (Windows only) for <code>LoadShedding</code> to function.</td>
 </tr>
 <tr>
 <td><code>MultiClusterOptions</code></td>
