@@ -94,7 +94,7 @@ Option classes in Orleans follow the <a href="https://docs.microsoft.com/en-us/a
     .Configure&lt;ClusterOptions&gt;(options =&gt;
     {
         options.ClusterId = &quot;my-first-cluster&quot;;
-        options.ServiceId = &quot;MyAwesomeOrleansService&quot;;
+        options.ServiceId = &quot;AspNetSampleApp&quot;;
     })
     // Clustering provider
     .UseAzureStorageClustering(options =&gt; options.ConnectionString = connectionString)
@@ -110,7 +110,7 @@ Option classes in Orleans follow the <a href="https://docs.microsoft.com/en-us/a
     // Clustering information
     .Configure&lt;ClusterOptions&gt;(options =&gt;
     {
-        options.ClusterId = &quot;orleans-docker&quot;;
+        options.ClusterId = &quot;my-first-cluster&quot;;
         options.ServiceId = &quot;AspNetSampleApp&quot;;
     })
     [...]
