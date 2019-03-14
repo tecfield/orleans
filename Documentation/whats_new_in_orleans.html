@@ -77,6 +77,31 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="whats-new-in-orleans">What&#39;s new in Orleans?</h1>
 
+<h2 id="v230-rc2httpsgithubcomdotnetorleansreleasestagv230-rc2-march-13th-2019"><a href="https://github.com/dotnet/orleans/releases/tag/v2.3.0-rc2">v2.3.0-rc2</a> March 13th 2019</h2>
+<p><code>Refactored stream batch behaviors to support batch consumption.</code> (#5425) is the only change. While technically it is breaking due to the changes to the batch streaming API, it shouldn&#39;t break any working application code because the batching functionality wasn&#39;t fully wired previously. No breaking change in the wire protocol or persistence. This release is backward-compatible with 2.x releases.</p>
+<h2 id="v230-rc1httpsgithubcomdotnetorleansreleasestagv230-rc1-march-5th-2019"><a href="https://github.com/dotnet/orleans/releases/tag/v2.3.0-rc1">v2.3.0-rc1</a> March 5th 2019</h2>
+<ul>
+<li>Major improvements<ul>
+<li>Support for the ASP.NET Core hosting API (Microsoft.Extensions.Hosting).</li>
+<li>Replacement of the custom implementation of named options with Microsoft.Extensions.Options.</li>
+<li>EventHub stream provider got upgrade to EvenHub 2.2.1 and is also compatible with 3.0.0.</li>
+<li>Old dead entries in the cluster membership table now get automatically cleaned up, which is helpful for hosting environments that use new IP endpoints for restarted silos.</li>
+<li>Hosted client that enables efficient hosting of frontend code within the silo process is now enabled by default.</li>
+</ul>
+</li>
+</ul>
+<h2 id="v157httpsgithubcomdotnetorleansreleasestagv157-february-28th-2019"><a href="https://github.com/dotnet/orleans/releases/tag/v1.5.7">v1.5.7</a> February 28th 2019</h2>
+<p>Two fixes backported from v2.x</p>
+<ul>
+<li>Non-breaking bug fixes<ul>
+<li>Fixes for Multi-Cluster Support (#3974)</li>
+<li>Add GSI cache maintenance and tests (#5184)</li>
+</ul>
+</li>
+</ul>
+<h2 id="v220httpsgithubcomdotnetorleansreleasestagv220-december-13th-2018"><a href="https://github.com/dotnet/orleans/releases/tag/v2.2.0">v2.2.0</a> December 13th 2018</h2>
+<p>This release is primarily about bringing support for ACID cross-grain transactions to production-ready quality.</p>
+<p>This release includes no breaking changes and is backward compatible with 2.0.* releases, which allows for in-place upgrade of a running cluster.</p>
 <h2 id="v210httpsgithubcomdotnetorleansreleasestagv210-september-28th-2018"><a href="https://github.com/dotnet/orleans/releases/tag/v2.1.0">v2.1.0</a> September 28th 2018</h2>
 <ul>
 <li>Major changes<ul>
