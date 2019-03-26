@@ -113,14 +113,14 @@ var client = new ClientBuilder()
 <pre><code class="lang-csharp">
 await client.Connect();
 </code></pre><h3 id="making-calls-to-grains">Making Calls to Grains</h3>
-<p>Making calls to grain from a client is really no different from <a href="/grains/developing_a_grain.md">making such calls from within grain code</a>.
-The same <code>GetGrain&lt;T&gt;(key)</code> method, where <code>T</code> is the target grain interface, is used in both cases <a href="/grains/developing_a_grain.md#grain-reference">to obtain grain references</a>.
+<p>Making calls to grain from a client is really no different from <a href="../grains/index.html">making such calls from within grain code</a>.
+The same <code>GetGrain&lt;T&gt;(key)</code> method, where <code>T</code> is the target grain interface, is used in both cases <a href="../grains/index.html#grain-reference">to obtain grain references</a>.
 The slight difference is in through what factory object we invoke <code>GetGrain</code>.
 In client code we do that through the connected client object.</p>
 <pre><code class="lang-csharp">IPlayerGrain player = client.GetGrain&lt;IPlayerGrain&gt;(playerId);
 Task t = player.JoinGame(game)
 await t;
-</code></pre><p>A call to a grain method returns a <code>Task</code> or a<code>Task&lt;T&gt;</code> as required by the <a href="/grains/developing_a_grain.md">grain interface rules</a>.
+</code></pre><p>A call to a grain method returns a <code>Task</code> or a<code>Task&lt;T&gt;</code> as required by the <a href="../grains/index.html">grain interface rules</a>.
 The client can use the <code>await</code> keyword to asynchronously await the returned <code>Task</code> without blocking the thread, or in some cases the <code>Wait()</code> method to block the current thread of execution.</p>
 <p>The major difference between making calls to grains from client code and from within another grain is the single-threaded execution model of grains.
 Grains are constrained to be single-threaded by the Orleans runtime, while clients may be multi-threaded.
