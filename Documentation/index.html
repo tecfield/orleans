@@ -104,7 +104,7 @@ In the world of microservices, Orleans is used as a framework for implementing a
 Any grain can be called by any other grain or by a frontend (client) by using the target grain&#39;s logical identity without the need to ever create or instantiate the target grain.
 The Orleans programming model makes grains appear as if they are in memory the whole time.
 In reality, a grain goes through the lifecycle from existing only as its persisted state in storage, to being instantiated in memory, to being removed from memory.
-See also <a href="/grains/grain_lifecycle.md">Grain Lifecycle</a>.</p>
+See also <a href="grains/grain_lifecycle.html">Grain Lifecycle</a>.</p>
 <p><img src="images/grain_lifecycle.png" alt=""></p>
 <p>Behind the scenes, the Orleans runtime instantiates (activates) grains when there&#39;s work for them to do, and removes them from memory (deactivates) to reclaim hardware resources when the grains are idle for too long.
 This grain lifecycle management work of the runtime is transparent to the application code, and liberates it from the complicated task of distributed resource management.
