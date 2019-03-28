@@ -97,11 +97,11 @@ The performance counters can be monitored using any of the standard monitoring t
 <p>To configure your silo and client to use telemetry consumers, silo configuration code looks like this: </p>
 <pre><code class="lang-c#">var siloHostBuilder = new SiloHostBuilder();
 //configure the silo with AITelemetryConsumer
-siloHostBuilder.Configure&lt;TelemetryOptions&gt;(options =&gt; options.AddConsumer&lt;AITelemetryConsumer&gt;);
+siloHostBuilder.AddApplicationInsightsTelemetryConsumer(&quot;INSTRUMENTATION_KEY&quot;);
 </code></pre><p>client configuration code look like this: </p>
 <pre><code class="lang-c#">var clientBuilder = new ClientBuilder();
 //configure the clientBuilder with AITelemetryConsumer
-clientBuilder.Configure&lt;TelemetryOptions&gt;(options =&gt; options.AddConsumer&lt;AITelemetryConsumer&gt;);
+clientBuilder.AddApplicationInsightsTelemetryConsumer(&quot;INSTRUMENTATION_KEY&quot;);
 </code></pre></article>
           </div>
           
