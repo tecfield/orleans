@@ -106,7 +106,7 @@ The grain can participate in its lifecycle, and/or components can access the lif
     base.Participate(lifecycle);
     lifecycle.Subscribe(this.GetType().FullName, GrainLifecycleStage.SetupState, OnSetupState);
 }
-</code></pre><p>In the above example, <code>Grain&lt;T&gt;</code> overrides the <code>participate</code> method to tell the lifecycle to call its OnSetupState method during the SetupState stage of the lifecycle.</p>
+</code></pre><p>In the above example, <code>Grain&lt;T&gt;</code> overrides the <code>Participate</code> method to tell the lifecycle to call its OnSetupState method during the SetupState stage of the lifecycle.</p>
 <p>Components created during a grain’s construction can take part in the lifecycle as well, without any special grain logic being added.
 Since the grain’s activation context (<code>IGrainActivationContext</code>), including the grain’s lifecycle (<code>IGrainActivationContext.ObservableLifecycle</code>), is created before the grain is created, any component injected into the grain by the container can participate in the grain’s lifecycle.</p>
 <h3 id="example-1">Example</h3>
@@ -129,12 +129,12 @@ This logic could exist in the component’s constructor, but that risks the comp
     private Task OnActivate(CancellationToken ct)
     {
         // Do stuff
-     }
+    }
 }
 </code></pre><p>By registering the above component in the service container using its <code>Create(..)</code> factory function, any grain constructed with the component as a dependency will have the component taking part in its lifecycle without any special logic in the grain.</p>
 <h4 id="register-component-in-container">Register component in container</h4>
 <pre><code class="lang-csharp">    services.AddTransient&lt;MyComponent&gt;(sp =&gt;
-        MyComponent.Create(sp.GetRequiredService&lt; IGrainActivationContext&gt;());
+        MyComponent.Create(sp.GetRequiredService&lt;IGrainActivationContext&gt;());
 </code></pre><h4 id="grain-with-component-as-dependency">Grain with component as dependency</h4>
 <pre><code class="lang-csharp">public class MyGrain : Grain, IMyGrain
 {
@@ -142,7 +142,7 @@ This logic could exist in the component’s constructor, but that risks the comp
 
     public MyGrain(MyComponent component)
     {
-        this. component = component;
+        this.component = component;
     }
 }
 </code></pre></article>

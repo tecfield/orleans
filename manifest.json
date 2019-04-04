@@ -2537,7 +2537,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/grains/grain_lifecycle.html",
-          "hash": "bvCJpsl7vH2dhjIdXCq5kg=="
+          "hash": "rnW34OmDEFzaGodmzTQRnw=="
         }
       },
       "is_incremental": false,
@@ -3888,13 +3888,13 @@
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build"
-        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
           "incrementalPhase": "build"
         }
       }
