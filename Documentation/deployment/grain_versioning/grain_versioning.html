@@ -95,18 +95,18 @@ In this example the client and Silo{1,2,3} were compiled with grain interface <c
 public interface IVersionUpgradeTestGrain : IGrainWithIntegerKey {}
 </code></pre><p>Where <code>X</code> is the version number of the grain interface, which is typically monotonically increasing.</p>
 <h2 id="grain-version-compatibility-and-placement">Grain version compatibility and placement</h2>
-<p>When a call from a versioned grain arrive in a cluster:</p>
+<p>When a call from a versioned grain arrives in a cluster:</p>
 <ul>
 <li>If no activation exists, a compatible activation will be created</li>
 <li>If an activation exists:<ul>
-<li>If the current one is not compatible, it will be deactivated and new compatible will be created (see <a href="version_selector_strategy.html">version selector strategy</a>)</li>
-<li>If the current one is compatible (see compatible grains), the call will be handled normally.</li>
+<li>If the current one is not compatible, it will be deactivated and new compatible one will be created (see <a href="version_selector_strategy.html">version selector strategy</a>)</li>
+<li>If the current one is compatible (see <a href="compatible_grains.html">compatible grains</a>), the call will be handled normally.</li>
 </ul>
 </li>
 </ul>
 <p>By default:</p>
 <ul>
-<li>All versioned grains are supposed to be backward-compatible only (see backward compatibility guidelines) and compatible grains(Compatible-grains.md)). That means that a v1 grain can make calls to a v2 grain, but a v2 grain cannot call a v1. </li>
+<li>All versioned grains are supposed to be backward-compatible only (see <a href="backward_compatibility_guidelines.html">backward compatibility guidelines</a> and <a href="compatible_grains.html">compatible grains</a>). That means that a v1 grain can make calls to a v2 grain, but a v2 grain cannot call a v1. </li>
 <li>When multiple versions exist in the cluster, the new activation will be randomly placed on a compatible silo. </li>
 </ul>
 <p>You can change this default behavior via the option <code>GrainVersioningOptions</code>:</p>
