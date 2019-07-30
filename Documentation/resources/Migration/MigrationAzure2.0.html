@@ -180,7 +180,7 @@ This is still supported via the <a href="https://www.nuget.org/packages/Microsof
             // Build silo host, so that any errors will restart the role instance
             this.host = this.builder.Build();
 
-            base.OnStart();
+            return base.OnStart();
         }
 
         public override void OnStop()
