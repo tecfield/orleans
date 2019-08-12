@@ -92,14 +92,16 @@ For example, to include all three providers (of course, you probably won&#39;t n
   &lt;Provider Type=&quot;Orleans.EventSourcing.LogStorage.LogConsistencyProvider&quot; Name=&quot;LogStorage&quot; /&gt;
   &lt;Provider Type=&quot;Orleans.EventSourcing.CustomStorage.LogConsistencyProvider&quot; Name=&quot;CustomStorage&quot; /&gt;
 &lt;/LogConsistencyProviders&gt;
-</code></pre><p>The same can be achieved programmatically. Assuming the project contains the <code>Microsoft.Orleans.EventSourcing</code> package, and <code>config</code> is a <code>ClusterConfiguration</code> object:</p>
-<pre><code class="lang-csharp">using Orleans.Runtime.Configuration; // pick up the necessary extension methods
-
-config.AddLogStorageBasedLogConsistencyProvider(&quot;LogStorage&quot;);
-config.AddStateStorageBasedLogConsistencyProvider(&quot;StateStorage&quot;);
-config.AddCustomStorageBasedLogConsistencyProvider(&quot;CustomStorage&quot;);
+</code></pre><p>The same can be achieved programmatically. Moving forward to 2.0.0 stable, ClientConfiguration and ClusterConfiguration no longer exist! It has now been replaced by a ClientBuilder and a SiloBuilder (notice there is no cluster builder). </p>
+<pre><code class="lang-csharp">builder.AddLogStorageBasedLogConsistencyProvider(&quot;LogStorage&quot;)
 </code></pre><h2 id="grain-class-attributes">Grain Class Attributes</h2>
-<p>Each journaled grain class must have a <code>LogConsistencyProvider</code> attribute to specify the log-consistency provider. Some providers additionally require a <code>StorageProvider</code> attribute.</p>
+<p>Each journaled grain class must have a <code>LogConsistencyProvider</code> attribute to specify the log-consistency provider. Some providers additionally require a <code>StorageProvider</code> attribute.
+Eg:
+[StorageProvider(ProviderName = &quot;OrleansLocalStorage&quot;)]
+[LogConsistencyProvider(ProviderName = &quot;LogStorage&quot;)]
+    public class EventSourcedBankAccountGrain : JournaledGrain<bankaccountstate>, IEventSourcedBankAccountGrain
+  {}<p>
+<p>So here &quot;OrleansLocalStorage&quot; is being used for storing the grain state, where was &quot;LogStorage&quot; is the in-memory storage provider for EventSourcing events.</p>
 <h3 id="logconsistencyprovider-attributes">LogConsistencyProvider Attributes</h3>
 <p>To specify the log-consistency provider, add a <code>[LogConsistencyProvider(ProviderName=...)]</code> attribute to the grain class, and give the name of the provider as configured by the Cluster Configuration. For example:</p>
 <pre><code class="lang-csharp">[LogConsistencyProvider(ProviderName = &quot;CustomStorage&quot;)]
@@ -117,7 +119,7 @@ public class ChatGrain : JournaledGrain&lt;XDocument, IChatEvent&gt;, IChatGrain
 &lt;StorageProviders&gt;
   &lt;Provider Type=&quot;Orleans.Storage.MemoryStorage&quot; Name=&quot;Default&quot; /&gt;
 &lt;/StorageProviders&gt;
-</code></pre></article>
+</code></pre></bankaccountstate></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
