@@ -85,11 +85,11 @@ This extensibility point is similar in spirit to <a href="https://github.com/dot
 Orleans currently ships with many stream providers, including : <a href="https://github.com/dotnet/orleans/blob/master/src/Orleans.Core/Streams/SimpleMessageStream/SimpleMessageStreamProvider.cs">Simple Message Stream Provider</a> and <a href="https://github.com/dotnet/orleans/tree/master/src/Azure/Orleans.Streaming.AzureStorage/Providers/Streams/AzureQueue">Azure Queue Stream Provider</a>.</p>
 <h2 id="simple-message-stream-provider">Simple Message Stream Provider</h2>
 <p>Simple Message Stream Provider, also known as the SMS provider, delivers events over TCP by utilizing regular Orleans grain messaging.
-Since events in SMS are delivered over unreliable TCP links, SMS does <em>not</em> guarantee reliable event delivery and does not automatically resend failed messages for SMS streams.
-The producer of the SMS stream has a way to know if its event was successfully received and processed or not: by default the call to <code>stream.OnNextAsync</code> returns a <code>Task</code> that represents the processing status of the stream consumer.
+Since events in SMS are delivered over unreliable TCP links, SMS does <em>not</em> guarantee reliable event delivery and does not automatically resend failed messages for SMS streams. 
+By default the producer&#39;s call to <code>stream.OnNextAsync</code> returns a <code>Task</code> that represents the processing status of the stream consumer, which tells the producer whether the consumer successfully received and processed the event.
 If this Task fails, the producer can decide to send the same event again, thus achieving reliability on the application level.
-Although individual stream messages delivery is best effort, SMS streams themselves are reliable.
-That is, the subscriber-to-producer binding performed by Pub Sub is fully reliable.</p>
+Although stream message delivery is best effort, SMS streams themselves are reliable.
+That is, the subscriber-to-producer binding performed by Pub-Sub is fully reliable.</p>
 <h2 id="azure-queue-aq-stream-provider">Azure Queue (AQ) Stream Provider</h2>
 <p>Azure Queue (AQ) Stream Provider delivers events over Azure Queues.
 On the producer side, AQ Stream Provider enqueues events directly into Azure Queue.
