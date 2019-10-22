@@ -151,7 +151,7 @@ public class AzureTableStorageOptions
         public TypeNameHandling? TypeNameHandling { get; set; }
         #endregion json serialization
 }
-</code></pre><blockquote><p><strong>Note:</strong> State size should not exceed 64KB, a limit imposed by Azure Table Storage.</p>
+</code></pre><blockquote><p><strong>Note:</strong> The maxium column size is 32kb (chars) or 64kb (bytes) in Azure Table Storage. When saving state larger than these limits, Orleans automatically splits longer values, over multiple Columns.  The maximum allowed size (per row over all columns) is 1Mb, a limit imposed by Azure Table Storage. </p>
 </blockquote>
 <h3 id="azureblobgrainstorage-provider">AzureBlobGrainStorage Provider</h3>
 <pre><code class="lang-csharp">var silo = new SiloHostBuilder()

@@ -80,10 +80,17 @@
 <p>By design, any sub-Tasks spawned from grain code (for example, by using <code>await</code> or <code>ContinueWith</code> or <code>Task.Factory.StartNew</code>) will be dispatched on the same per-activation <a href="https://msdn.microsoft.com/en-us/library/dd997402(v=vs.110).aspx">TPL Task Scheduler</a> as the parent task and therefore inherit the same single-threaded execution model as the rest of grain code. This is the main point behind single threaded execution of <a href="http://dotnet.github.io/orleans/Tutorials/Concurrency">grain turn based concurency</a>.</p>
 <p>In some cases grain code might need to “break out” of the Orleans task scheduling model and “do something special”, such as explicitly pointing a <code>Task</code> to a different task scheduler or using the .NET Thread pool. An example of such cases is when grain code has to execute a synchronous remote blocking call (such as remote IO). Doing that in the grain context will block the grain as well as one of the Orleans threads and thus should never be made. Instead, the grain code can execute this piece of blocking code on the thread pool thread and join (<code>await</code>) the completion of that execution and proceed in the grain context. We expect that escaping from the Orleans scheduler will be a very advanced and seldom required usage scenario beyond the “normal” usage patterns.</p>
 <h3 id="task-based-apis">Task based APIs:</h3>
-<p>1) <code>await</code>, <code>Task.Factory.StartNew</code>, <code>Task.ContinuewWith</code>, <code>Task.WhenAny</code>, <code>Task.WhenAll</code>, <code>Task.Delay</code> all respect the current Task Scheduler. That means that using them in the default way, without passing a different TaskScheduler, will cause them to execute in the grain context.</p>
+<p>1) <code>await</code>, <code>Task.Factory.StartNew</code> (see below), <code>Task.ContinuewWith</code>, <code>Task.WhenAny</code>, <code>Task.WhenAll</code>, <code>Task.Delay</code> all respect the current Task Scheduler. That means that using them in the default way, without passing a different TaskScheduler, will cause them to execute in the grain context.</p>
 <p>2) Both <code>Task.Run</code> and the <code>endMethod</code> delegate of <code>Task.Factory.FromAsync</code> do NOT respect the current task Scheduler. They both use the <code>TaskScheduler.Default</code> scheduler, which is the .NET thread pool task Scheduler. Therefore, the code inside <code>Task.Run</code> and the <code>endMethod</code> will ALWAYS run on the .NET thread pool outside of the single-threaded execution model for Orleans grains, <a href="http://blogs.msdn.com/b/pfxteam/archive/2011/10/24/10229468.aspx">as detailed here</a>. However, any code after the <code>await Task.Run</code> or <code>await Task.Factory.FromAsync</code> will run back under the scheduler at the point the task was created, which is the grain scheduler.</p>
-<p>3) <code>configureAwait(false)</code> is an explicit API to escape the current task Scheduler. It will cause the code after an awaited Task to be executed on the <code>TaskScheduler.Default</code> scheduler, which is the .NET thread pool, and will thus break the single-threaded execution of the Orleans grain. You should in general <strong>never ever use <code>configureAwait(false)</code> directly in grain code.</strong></p>
+<p>3) <code>configureAwait(false)</code> is an explicit API to escape the current task Scheduler. It will cause the code after an awaited Task to be executed on the <code>TaskScheduler.Default</code> scheduler, which is the .NET thread pool, and will thus break the single-threaded execution of the Orleans grain. You should in general <strong>never ever use <code>ConfigureAwait(false)</code> directly in grain code.</strong></p>
 <p>4) Methods with signature <code>async void</code> should not be used with grains. They are intended for graphical user interface event handlers.</p>
+<h4 id="taskfactorystartnew-and-async-delegates">Task.Factory.StartNew and async delegates</h4>
+<p>The usual recommendation for scheduling tasks in any C# program is to use <code>Task.Run</code> in favor of <code>Task.Factory.StartNew</code>.
+In fact, a quick google search on the use of <code>Task.Factory.StartNew()</code> will suggest <a href="https://blog.stephencleary.com/2013/08/startnew-is-dangerous.html">that it is Dangerous</a> and <a href="https://devblogs.microsoft.com/pfxteam/task-run-vs-task-factory-startnew/">that one should always favor <code>Task.Run</code></a>. But if we want to stay in the Orleans single threaded execution model for our grain then we need to use it, so how do we do it correctly then?
+The &quot;danger&quot; when using <code>Task.Factory.StartNew()</code> is that it does not natively support async delegates.
+This means that this is likely a bug: <code>var notIntendedTask = Task.Factory.StartNew(SomeDelegateAsync)</code>.
+<code>notIntendedTask</code> is <em>not</em> a task that completes when <code>SomeDelegateAsync</code> does.
+Instead, one should <em>always</em> unwrap the returned task: <code>var task = Task.Factory.StartNew(SomeDelegateAsync).Unwrap()</code>.</p>
 <h3 id="example">Example:</h3>
 <p>Below is sample code that demonstrates the usage of <code>TaskScheduler.Current</code>, <code>Task.Run</code> and a special custom scheduler to escape from Orlean grain context and how to get back to it.</p>
 <pre><code class="lang-csharp">   public async Task MyGrainMethod()
@@ -169,8 +176,12 @@
 <td>Method return types = <code>Task</code> or <code>Task&lt;T&gt;</code></td>
 </tr>
 <tr>
-<td>Run worker task from grain code with Orleans turn-based concurrency guarantees.</td>
-<td><code>Task.Factory.StartNew</code></td>
+<td>Run asynchronous worker task from grain code with Orleans turn-based concurrency guarantees (<a href="#taskfactorystartnew-and-async-delegates">see above</a>).</td>
+<td><code>Task.Factory.StartNew(WorkerAsync).Unwrap()</code></td>
+</tr>
+<tr>
+<td>Run synchronous worker task from grain code with Orleans turn-based concurrency guarantees.</td>
+<td><code>Task.Factory.StartNew(WorkerSync)</code></td>
 </tr>
 <tr>
 <td>Timeouts for executing work items</td>
