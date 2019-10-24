@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/github/sergeybykov/orleans-2/src",
+  "source_base_path": "C:/GitHub/SergeyBykov/orleans-2/src",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -1855,6 +1855,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "Documentation/clusters_and_clients/configuration_guide/adonet_configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/clusters_and_clients/configuration_guide/adonet_configuration.html",
+          "hash": "aOGxpQ/fUpbR+buY57k5fA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "Documentation/clusters_and_clients/configuration_guide/client_configuration.md",
       "output": {
         ".html": {
@@ -2525,7 +2537,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/grains/grain_identity.html",
-          "hash": "HzNvkAB66nelL/ylhjhauA=="
+          "hash": "+Ly5hmmkEI2r2J8T9U+Faw=="
         }
       },
       "is_incremental": false,
@@ -2545,11 +2557,35 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "Documentation/grains/grain_persistence/azure_storage.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/grains/grain_persistence/azure_storage.html",
+          "hash": "dAYhUDY+JRBraFvJzJ1//w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/grains/grain_persistence/dynamodb_storage.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/grains/grain_persistence/dynamodb_storage.html",
+          "hash": "MEG3UmSKbdU86AXvpe8SIA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "Documentation/grains/grain_persistence/index.md",
       "output": {
         ".html": {
           "relative_path": "Documentation/grains/grain_persistence/index.html",
-          "hash": "5Jn7uf1D+kxTt+05bThjKA=="
+          "hash": "1Sg9J/YTnMbSfA4c12qXaQ=="
         }
       },
       "is_incremental": false,
@@ -2561,7 +2597,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/grains/grain_persistence/relational_storage.html",
-          "hash": "9ZX6TzwOJRql0dlKzxkFDg=="
+          "hash": "MetoPhIqV6BA3FdGhBbBbA=="
         }
       },
       "is_incremental": false,
@@ -2703,6 +2739,17 @@
       "output": {
         "resource": {
           "relative_path": "Documentation/images/grain_lifecycle.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Documentation/images/grain_state_1.png",
+      "output": {
+        "resource": {
+          "relative_path": "Documentation/images/grain_state_1.png"
         }
       },
       "is_incremental": false,
@@ -3070,7 +3117,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/toc.html",
-          "hash": "Q6N51ehhKp4fPMSFtph5rA=="
+          "hash": "m6k15ucEJ+fqQTn3ANuupQ=="
         }
       },
       "is_incremental": false,
@@ -3880,22 +3927,31 @@
       "status": {
         "can_incremental": false,
         "details": "Cannot build incrementally because last build info is missing.",
-        "incrementalPhase": "build"
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build"
-        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 218,
+          "skipped_file_count": 0
         }
       }
     },
@@ -3903,7 +3959,9 @@
       "status": {
         "can_incremental": false,
         "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
-        "incrementalPhase": "postProcessing"
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
       },
       "processors": {}
     }
