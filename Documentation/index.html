@@ -190,37 +190,28 @@ You can run <code>Test.cmd</code> to run all BVT tests, and <code>TestAll.cmd</c
 <p>The latest stable, production-quality release is located <a href="https://github.com/dotnet/orleans/releases/latest">here</a>.</p>
 <p>Nightly builds are published to <a href="https://dotnet.myget.org/gallery/orleans-ci">https://dotnet.myget.org/gallery/orleans-ci</a>.
 These builds pass all functional tests, but are not thoroughly tested as the stable builds or pre-release builds published to NuGet.</p>
-<details>
-<summary>
-Using the nightly build packages in your project
-</summary>
-
-To use nightly builds in your project, add the MyGet feed using either of the following methods:
-
-1. Changing the .csproj file to include this section:
-
-<code>xml
-  &lt;RestoreSources&gt;
+<h3 id="using-the-nightly-build-packages-in-your-project">Using the nightly build packages in your project</h3>
+<p>To use nightly builds in your project, add the MyGet feed using either of the following methods:</p>
+<ol>
+<li>Changing the .csproj file to include this section:</li>
+</ol>
+<pre><code class="lang-xml">  &lt;RestoreSources&gt;
     $(RestoreSources);
     https://dotnet.myget.org/F/orleans-ci/api/v3/index.json;
-  &lt;/RestoreSources&gt;</code>
-
-or
-
-2. Creating a <code>NuGet.config</code> file in the solution directory with the following contents:
-
-<code>xml
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+  &lt;/RestoreSources&gt;
+</code></pre><p>or</p>
+<ol>
+<li>Creating a <code>NuGet.config</code> file in the solution directory with the following contents:</li>
+</ol>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;configuration&gt;
  &lt;packageSources&gt;
   &lt;clear /&gt;
   &lt;add key=&quot;orleans-ci&quot; value=&quot;https://dotnet.myget.org/F/orleans-ci/api/v3/index.json&quot; /&gt;
   &lt;add key=&quot;nuget&quot; value=&quot;https://api.nuget.org/v3/index.json&quot; /&gt;
  &lt;/packageSources&gt;
-&lt;/configuration&gt;</code>
-</details>
-
-<h2 id="community">Community</h2>
+&lt;/configuration&gt;
+</code></pre><h2 id="community">Community</h2>
 <ul>
 <li>Ask questions by <a href="https://github.com/dotnet/orleans/issues">opening an issue on GitHub</a> or on <a href="https://stackoverflow.com/questions/ask?tags=orleans">Stack Overflow</a></li>
 <li><a href="https://gitter.im/dotnet/orleans">Chat on Gitter</a></li>
