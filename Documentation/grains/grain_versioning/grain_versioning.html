@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Code Generation in Orleans 2.0 | Microsoft Orleans Documentation </title>
+    <title>Grain Interface Versioning | Microsoft Orleans Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Code Generation in Orleans 2.0 | Microsoft Orleans Documentation ">
+    <meta name="title" content="Grain Interface Versioning | Microsoft Orleans Documentation ">
     <meta name="generator" content="docfx 2">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -75,17 +75,50 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="code-generation-in-orleans-20">Code Generation in Orleans 2.0</h1>
+<h1 id="grain-interface-versioning">Grain Interface Versioning</h1>
 
-<p>Code generation has been improved in Orleans 2.0, improving startup times and providing a more deterministic, debuggable experience. As with earlier versions, Orleans provides both build-time and run-time code generation.</p>
-<ol>
-<li><p><strong>During Build</strong> - This is the recommended option and only supports C# projects. In this mode, code generation will run every time your project is compiled. A build task is injected into your project&#39;s build pipeline and the code is generated in the project&#39;s intermediate output directory. To activate this mode, add one of the packages <code>Microsoft.Orleans.CodeGenerator.MSBuild</code> or <code>Microsoft.Orleans.OrleansCodeGenerator.Build</code> to all projects which contain Grains, Grain interfaces, serializers, or types which require serializers. Differences between the packages and additional codegen information could be found in the corresponding <a href="../../grains/code_generation.html">Code Generation</a> section. Additional diagnostics can be emitted at build-time by specifying value for <code>OrleansCodeGenLogLevel</code> in the target project&#39;s <em>csproj</em> file. For example, <code>&lt;OrleansCodeGenLogLevel&gt;Trace&lt;/OrleansCodeGenLogLevel&gt;</code>.</p>
+<div class="WARNING"><h5>Warning</h5><p>This page describes how to use grain interface versioning. The versioning of
+Grain state is out of scope.</p>
+</div>
+<h2 id="overview">Overview</h2>
+<p>On a given cluster, silos can support different versions of a grain type.
+<img src="version.png" alt="Cluster with different versions of a grain">
+In this example the client and Silo{1,2,3} were compiled with grain interface <code>A</code> version 1. Silo 4 was compiled with <code>A</code> version 2.</p>
+<h2 id="limitations">Limitations:</h2>
+<ul>
+<li>No versioning on stateless worker</li>
+<li>Streaming interfaces are not versioned</li>
+</ul>
+<h2 id="enable-versioning">Enable versioning</h2>
+<p>By default, grains are not versioned. You can version grain by using the VersionAttribute on the grain interface:</p>
+<pre><code class="lang-cs">[Version(X)]
+public interface IVersionUpgradeTestGrain : IGrainWithIntegerKey {}
+</code></pre><p>Where <code>X</code> is the version number of the grain interface, which is typically monotonically increasing.</p>
+<h2 id="grain-version-compatibility-and-placement">Grain version compatibility and placement</h2>
+<p>When a call from a versioned grain arrives in a cluster:</p>
+<ul>
+<li>If no activation exists, a compatible activation will be created</li>
+<li>If an activation exists:<ul>
+<li>If the current one is not compatible, it will be deactivated and new compatible one will be created (see <a href="version_selector_strategy.html">version selector strategy</a>)</li>
+<li>If the current one is compatible (see <a href="compatible_grains.html">compatible grains</a>), the call will be handled normally.</li>
+</ul>
 </li>
-<li><p><strong>During Configuration</strong> - This is the only supported option for F#, Visual Basic, and other non-C# projects. This mode generates code during the configuration phase. To access this, see the Configuration documentation.</p>
-</li>
-</ol>
-<p>Both modes generate the same code, however run-time code generation can only generate code for publicly accessible types.</p>
-</article>
+</ul>
+<p>By default:</p>
+<ul>
+<li>All versioned grains are supposed to be backward-compatible only (see <a href="backward_compatibility_guidelines.html">backward compatibility guidelines</a> and <a href="compatible_grains.html">compatible grains</a>). That means that a v1 grain can make calls to a v2 grain, but a v2 grain cannot call a v1. </li>
+<li>When multiple versions exist in the cluster, the new activation will be randomly placed on a compatible silo. </li>
+</ul>
+<p>You can change this default behavior via the option <code>GrainVersioningOptions</code>:</p>
+<pre><code class="lang-csharp">var silo = new SiloHostBuilder()
+  [...]
+  .Configure&lt;GrainVersioningOptions&gt;(options =&gt; 
+  {
+    options.DefaultCompatibilityStrategy = nameof(BackwardCompatible);
+    options.DefaultVersionSelectorStrategy = nameof(MinimumVersion);
+  })
+  [...]
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -93,7 +126,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/dotnet/orleans/blob/docs/src/Documentation/resources/Migration/Codegen.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/dotnet/orleans/blob/docs/src/Documentation/grains/grain_versioning/grain_versioning.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

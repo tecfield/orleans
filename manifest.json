@@ -1211,7 +1211,7 @@
       "output": {
         ".html": {
           "relative_path": "1.5/Documentation/toc.html",
-          "hash": "NmfUu02qAluytopd6MGKyA=="
+          "hash": "aDsXL78m5DqZaFIFlXg1NQ=="
         }
       },
       "is_incremental": false,
@@ -1955,7 +1955,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/clusters_and_clients/configuration_guide/server_configuration.html",
-          "hash": "nab0pQklcNYSr0bkaKSNEg=="
+          "hash": "0spC2PcqgqZ0Xp+RmmU6UA=="
         }
       },
       "is_incremental": false,
@@ -2105,58 +2105,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "Documentation/core_concepts/code_generation.md",
-      "output": {
-        ".html": {
-          "relative_path": "Documentation/core_concepts/code_generation.html",
-          "hash": "5yWKE2XO2eporwNRT8pI+w=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "Documentation/core_concepts/grain_lifecycle.png",
-      "output": {
-        "resource": {
-          "relative_path": "Documentation/core_concepts/grain_lifecycle.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "Documentation/core_concepts/index.md",
-      "output": {
-        ".html": {
-          "relative_path": "Documentation/core_concepts/index.html",
-          "hash": "rENdzu3D24LMmcwGU8SaDQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "Documentation/core_concepts/what_are_orleans_packages.md",
-      "output": {
-        ".html": {
-          "relative_path": "Documentation/core_concepts/what_are_orleans_packages.html",
-          "hash": "YlAlDrKdNgBdILiJO5W58w=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "Documentation/deployment/azure_web_apps_with_azure_cloud_services.md",
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/azure_web_apps_with_azure_cloud_services.html",
-          "hash": "Vq1jO4vZlDfZzXCUdTsB/A=="
+          "hash": "Jik/Mhy4MaC7rVS9t6Aixw=="
         }
       },
       "is_incremental": false,
@@ -2168,7 +2121,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/consul_deployment.html",
-          "hash": "r0UPJ3SkmLJxXXhPHX1LZQ=="
+          "hash": "Bt8iOQuSS//VhOYr9hzu2Q=="
         }
       },
       "is_incremental": false,
@@ -2191,89 +2144,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/docker_deployment.html",
-          "hash": "jIWhtAq8sb9alvHPR2fxwg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "Documentation/deployment/grain_versioning/backward_compatibility_guidelines.md",
-      "output": {
-        ".html": {
-          "relative_path": "Documentation/deployment/grain_versioning/backward_compatibility_guidelines.html",
-          "hash": "iWY/tIvsD10KSgH/dR4xXA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "Documentation/deployment/grain_versioning/compatible_grains.md",
-      "output": {
-        ".html": {
-          "relative_path": "Documentation/deployment/grain_versioning/compatible_grains.html",
-          "hash": "u/QADTCKHPpMacTAIhiGHg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "Documentation/deployment/grain_versioning/deploying_new_versions_of_grains.md",
-      "output": {
-        ".html": {
-          "relative_path": "Documentation/deployment/grain_versioning/deploying_new_versions_of_grains.html",
-          "hash": "byIYNXLSzpy4TwV4DGVa9A=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "Documentation/deployment/grain_versioning/grain_versioning.md",
-      "output": {
-        ".html": {
-          "relative_path": "Documentation/deployment/grain_versioning/grain_versioning.html",
-          "hash": "Tk8ekNZaHkTyHqQp7bqevQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "Documentation/deployment/grain_versioning/rolling.gif",
-      "output": {
-        "resource": {
-          "relative_path": "Documentation/deployment/grain_versioning/rolling.gif"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "Documentation/deployment/grain_versioning/version.png",
-      "output": {
-        "resource": {
-          "relative_path": "Documentation/deployment/grain_versioning/version.png"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "Documentation/deployment/grain_versioning/version_selector_strategy.md",
-      "output": {
-        ".html": {
-          "relative_path": "Documentation/deployment/grain_versioning/version_selector_strategy.html",
-          "hash": "9eGl63aMPRVbsQYvVc0FzQ=="
+          "hash": "J4q2rjw3ZY4tZwcHbMH+qw=="
         }
       },
       "is_incremental": false,
@@ -2285,7 +2156,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/handling_failures.html",
-          "hash": "RwBGjiEJ89hzWL/9hAXQ4A=="
+          "hash": "lx1A68ex9hdb7aat2wCCAA=="
         }
       },
       "is_incremental": false,
@@ -2297,7 +2168,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/index.html",
-          "hash": "Tiqil3v4Jn4CPrZEA6WipQ=="
+          "hash": "vuzouBaIl+SToFZqr+/USg=="
         }
       },
       "is_incremental": false,
@@ -2309,7 +2180,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/multi-cluster_support/GlobalSingleInstance.html",
-          "hash": "WQ5MRBwPXCt0MvP2lJXdGQ=="
+          "hash": "kM6FeR/BcmlQXT4qPwd/aA=="
         }
       },
       "is_incremental": false,
@@ -2321,7 +2192,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/multi-cluster_support/GossipChannels.html",
-          "hash": "FXwHIfWjfuRuPyxfZvuNQw=="
+          "hash": "b7jylfezfWyJKOCdCVUXIw=="
         }
       },
       "is_incremental": false,
@@ -2333,7 +2204,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/multi-cluster_support/MultiClusterConfiguration.html",
-          "hash": "OFvfzWl0HbBijs7nKBFJ5g=="
+          "hash": "mLlAY/6sEeLN9aVAK7duaQ=="
         }
       },
       "is_incremental": false,
@@ -2345,7 +2216,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/multi-cluster_support/Overview.html",
-          "hash": "SOePwIk2HaGDzRJb0Ee2eA=="
+          "hash": "Vu/MCz13L9MUTqfxmq0lEA=="
         }
       },
       "is_incremental": false,
@@ -2357,7 +2228,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/multi-cluster_support/SiloConfiguration.html",
-          "hash": "gWWhoh3BgGSRNTvm6iad+g=="
+          "hash": "uMRwN9uCW4pzBz7F5el8vg=="
         }
       },
       "is_incremental": false,
@@ -2369,7 +2240,19 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/service_fabric_hosting.html",
-          "hash": "lQU+ZTuYWDZ7y/yzYeXh1w=="
+          "hash": "45zFpj+cG+Ty5SaUv85EzA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "Documentation/deployment/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/deployment/toc.html",
+          "hash": "Gf2K07Cf3T47DFI5LQG0Jw=="
         }
       },
       "is_incremental": false,
@@ -2381,7 +2264,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/troubleshooting_azure_cloud_services_deployments.html",
-          "hash": "ywtGaiOEepH4ENJnnC2YiA=="
+          "hash": "1/3cE32U0BAux+pZ6NotnA=="
         }
       },
       "is_incremental": false,
@@ -2393,19 +2276,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/deployment/troubleshooting_deployments.html",
-          "hash": "hmeWUJhvgB+tPVxXjtgQGA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "Documentation/frequently_asked_questions.md",
-      "output": {
-        ".html": {
-          "relative_path": "Documentation/frequently_asked_questions.html",
-          "hash": "nKPW0iTfuS8DE6lBy9R0jg=="
+          "hash": "LdFS7DJpZig718BTTAcEMw=="
         }
       },
       "is_incremental": false,
@@ -2418,6 +2289,18 @@
         ".html": {
           "relative_path": "Documentation/grains/cancellation_tokens.html",
           "hash": "sKg7Kf9Wdvo9A5nE2vjIbQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/grains/code_generation.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/grains/code_generation.html",
+          "hash": "OSFf/TpbS2E52OJxy2+ffQ=="
         }
       },
       "is_incremental": false,
@@ -2585,7 +2468,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/grains/grain_persistence/index.html",
-          "hash": "1Sg9J/YTnMbSfA4c12qXaQ=="
+          "hash": "QGbcgGoZX0o6Q8Sl6X+nSA=="
         }
       },
       "is_incremental": false,
@@ -2598,6 +2481,88 @@
         ".html": {
           "relative_path": "Documentation/grains/grain_persistence/relational_storage.html",
           "hash": "MetoPhIqV6BA3FdGhBbBbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/grains/grain_versioning/backward_compatibility_guidelines.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/grains/grain_versioning/backward_compatibility_guidelines.html",
+          "hash": "KjqLtOBJQ3dFpi3DDGOu1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/grains/grain_versioning/compatible_grains.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/grains/grain_versioning/compatible_grains.html",
+          "hash": "mYUx7wo22oP7V5ATZRFueQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/grains/grain_versioning/deploying_new_versions_of_grains.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/grains/grain_versioning/deploying_new_versions_of_grains.html",
+          "hash": "EZQpNpdjHBmOOBQxSyjAwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/grains/grain_versioning/grain_versioning.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/grains/grain_versioning/grain_versioning.html",
+          "hash": "e9f5jCNOYTrIowjfAoRG+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Documentation/grains/grain_versioning/rolling.gif",
+      "output": {
+        "resource": {
+          "relative_path": "Documentation/grains/grain_versioning/rolling.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Documentation/grains/grain_versioning/version.png",
+      "output": {
+        "resource": {
+          "relative_path": "Documentation/grains/grain_versioning/version.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/grains/grain_versioning/version_selector_strategy.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/grains/grain_versioning/version_selector_strategy.html",
+          "hash": "PWZiMqyVZFkRRL/8+94aMA=="
         }
       },
       "is_incremental": false,
@@ -2901,7 +2866,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/index.html",
-          "hash": "5QdAhIobwDHsBPXbLsgp8Q=="
+          "hash": "qLr9VYNI6FHuU1pkTSFiLA=="
         }
       },
       "is_incremental": false,
@@ -2925,7 +2890,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/resources/Migration/Codegen.html",
-          "hash": "0l/mMIhwlFKH0Xbb9mcjkw=="
+          "hash": "uTlaP+1hCX1ztRoFZYw5MA=="
         }
       },
       "is_incremental": false,
@@ -2937,7 +2902,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/resources/Migration/Migration1.5.html",
-          "hash": "8Hxr+N4BxdtzHOYeIEXAVQ=="
+          "hash": "66k1DgVGPhVNtW0CRztP3g=="
         }
       },
       "is_incremental": false,
@@ -2949,7 +2914,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/resources/Migration/MigrationAzure2.0.html",
-          "hash": "IwsDFIHRD++zSTCQdFXAXQ=="
+          "hash": "E70Aq6aStq3wAP1Y/Tmk3w=="
         }
       },
       "is_incremental": false,
@@ -2961,7 +2926,19 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/resources/Migration/index.html",
-          "hash": "4yDshBmSZOj8m8QcFsHpTg=="
+          "hash": "YbD9a+i9rdiuUAEs8VFVYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "Documentation/resources/Migration/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/resources/Migration/toc.html",
+          "hash": "SY7spEeinofNjovfY75llw=="
         }
       },
       "is_incremental": false,
@@ -2993,11 +2970,23 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "Documentation/resources/frequently_asked_questions.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/resources/frequently_asked_questions.html",
+          "hash": "dttSWjKLdCnhuTMwm/E60A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "Documentation/resources/index.md",
       "output": {
         ".html": {
           "relative_path": "Documentation/resources/index.html",
-          "hash": "pWHPTuor3gOHnDonaeujgw=="
+          "hash": "nr+4j+Dru2IpgvMSHLjx4A=="
         }
       },
       "is_incremental": false,
@@ -3010,6 +2999,18 @@
         ".html": {
           "relative_path": "Documentation/resources/links.html",
           "hash": "6hI+Wlpl+iQjUqhMoLswZw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/resources/nuget_packages.md",
+      "output": {
+        ".html": {
+          "relative_path": "Documentation/resources/nuget_packages.html",
+          "hash": "b3pZKKsXUuWkNt1apOjwaA=="
         }
       },
       "is_incremental": false,
@@ -3117,7 +3118,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/toc.html",
-          "hash": "m6k15ucEJ+fqQTn3ANuupQ=="
+          "hash": "YeNoSJUWJem4+VbUiEihZg=="
         }
       },
       "is_incremental": false,
@@ -3213,7 +3214,7 @@
       "output": {
         ".html": {
           "relative_path": "Documentation/whats_new_in_orleans.html",
-          "hash": "YeKakQbXY7I8DtpuJlI7kQ=="
+          "hash": "YG+ibaxJa7pV/i1Yk8IdNQ=="
         }
       },
       "is_incremental": false,
@@ -3584,6 +3585,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "Images/grain_formulation.svg",
+      "output": {
+        "resource": {
+          "relative_path": "Images/grain_formulation.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "Images/logo-light.svg",
       "output": {
         "resource": {
@@ -3599,6 +3611,17 @@
       "output": {
         "resource": {
           "relative_path": "Images/logo.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Images/managed_lifecycle.svg",
+      "output": {
+        "resource": {
+          "relative_path": "Images/managed_lifecycle.svg"
         }
       },
       "is_incremental": false,
@@ -3645,7 +3668,7 @@
       "output": {
         ".html": {
           "relative_path": "Tutorials/index.html",
-          "hash": "7uvRCWd6YDCHjzrqiPUmPw=="
+          "hash": "BmEZiL79OZzgN4RHUJsIeg=="
         }
       },
       "is_incremental": false,
@@ -3898,12 +3921,12 @@
       "version": ""
     },
     {
-      "type": "index",
+      "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "FCGBIFFs1Ncp8FLsAai2XQ=="
+          "hash": "MKK2Dg8JIOkRm176d1XH0A=="
         }
       },
       "is_incremental": false,
@@ -3915,7 +3938,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "nbnLzQBEnedjZsO2Sbr9Qw=="
+          "hash": "28oaDGNHj7ltcTErl40bUQ=="
         }
       },
       "is_incremental": false,
@@ -3925,21 +3948,12 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "NoAvailableBuildCache"
+        "skipped_file_count": 0
       },
       "processors": {
-        "ResourceDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
-        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
@@ -3947,11 +3961,18 @@
           "total_file_count": 0,
           "skipped_file_count": 0
         },
-        "ConceptualDocumentProcessor": {
+        "ResourceDocumentProcessor": {
           "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
-          "total_file_count": 218,
+          "total_file_count": 0,
           "skipped_file_count": 0
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 217,
+          "skipped_file_count": 216
         }
       }
     },

@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Resources | Microsoft Orleans Documentation </title>
+    <title>Version selector strategy | Microsoft Orleans Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Resources | Microsoft Orleans Documentation ">
+    <meta name="title" content="Version selector strategy | Microsoft Orleans Documentation ">
     <meta name="generator" content="docfx 2">
     
-    <link rel="shortcut icon" href="../../favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../../../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -32,8 +32,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../Images/logo-light.svg" alt="">
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../Images/logo-light.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -75,17 +75,36 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="resources">Resources</h1>
+<h1 id="version-selector-strategy">Version selector strategy</h1>
 
-<h2 id="contributingcontributingmd"><a href="Contributing.html">Contributing</a></h2>
-<p>Some notes and guidelines for developers who want to contribute to Orleans.</p>
-<h2 id="documentation-guidelinesdocumentationguidelinesmd"><a href="documentation_guidelines.html">Documentation Guidelines</a></h2>
-<p>The Orleans documentation is built in Markdown.
-We use a few simple conventions to ensure a homogeneous style throughout the full set of documents.</p>
-<h2 id="linkslinksmd"><a href="links.html">Links</a></h2>
-<p>Links to articles by members of the Orleans team and others.</p>
-<h2 id="presentationspresentationsindexmd"><a href="Presentations/index.html">Presentations</a></h2>
-<p>A collection of PowerPoint presentations about topics including Orleans Best Practices, Balancing Techniques, and Streaming.</p>
+<p>When several versions of the same grain interface exist in the cluster, and a new
+activation has to be created, a <a href="compatible_grains.html">compatible version</a> will be chosen according to the strategy defined in <code>GrainVersioningOptions.DefaultVersionSelectorStrategy</code>.</p>
+<p>Orleans out of the box supports the following strategies:</p>
+<h2 id="all-compatible-versions-default">All compatible versions (default)</h2>
+<p>Using this strategy, the version of the new activation will be chosen randomly 
+across all compatible versions.</p>
+<p>For example if we have 2 versions of a given grain interface, V1 and V2:</p>
+<ul>
+<li>V2 is backward compatible with V1</li>
+<li>In the cluster there are 2 silos that support V2, 8 support V1</li>
+<li>The request was made from a V1 client/silo</li>
+</ul>
+<p>In this case, there is a 20% chance that the new activation will be a V2 and 80%
+chance that it will be a V1.</p>
+<h2 id="latest-version">Latest version</h2>
+<p>Using this strategy, the version of the new activation will always be the
+latest compatible version.</p>
+<p>For example if we have 2 versions of a given grain interface, V1 and V2 
+(V2 is backward or fully compatible with V1) then all new activations will be V2.</p>
+<h2 id="minimum-version">Minimum version</h2>
+<p>Using this strategy, the version of the new activation will always be the requested or the
+minimum compatible version.</p>
+<p>For example if we have 2 versions of a given grain interface, V2, V3, all fully 
+compatibles:</p>
+<ul>
+<li>If the request was made from a V1 client/silo, the new activation will be a V2</li>
+<li>If the request was made from a V3 client/silo, the new activation will be a V2 too</li>
+</ul>
 </article>
           </div>
           
@@ -94,7 +113,7 @@ We use a few simple conventions to ensure a homogeneous style throughout the ful
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/dotnet/orleans/blob/docs/src/Documentation/resources/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/dotnet/orleans/blob/docs/src/Documentation/grains/grain_versioning/version_selector_strategy.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -120,8 +139,8 @@ We use a few simple conventions to ensure a homogeneous style throughout the ful
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
   </body>
 </html>
