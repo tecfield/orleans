@@ -115,7 +115,7 @@ StreamQueueBalancer allows customizing that process. Orleans has a number of bui
         options=&gt;{ options.TotalQueueCount = 8; }))
       .UseDynamicClusterConfigDeploymentBalancer()
 );
-</code></pre><p>The above code configures the GeneratorAdapter to use a queue mapper with 8 queues, and balences the queues across the cluster using the DynamicClusterConfigDeploymentBalancer.</p>
+</code></pre><p>The above code configures the GeneratorAdapter to use a queue mapper with 8 queues, and balances the queues across the cluster using the <code>DynamicClusterConfigDeploymentBalancer</code>.</p>
 <h3 id="pulling-protocola-namepulling-protocola">Pulling Protocol<a name="Pulling-Protocol"></a></h3>
 <p>Every silo runs a set of pulling agents, every agent is pulling from one queue. Pulling agents themselves are implemented by an internal runtime component, called <strong>SystemTarget</strong>.
 SystemTargets are essentially runtime grains, are subject to single threaded concurrency, can use regular grain messaging, and are as lightweight as grains.
@@ -130,11 +130,11 @@ This handshake between the agent and the pub-sub guarantees <strong>strong strea
 <p><a href="https://github.com/dotnet/orleans/blob/master/src/Orleans.Core/Streams/QueueAdapters/IQueueCache.cs"><strong><code>IQueueCache</code></strong></a> is an internal per-agent data structure that allows to decoupling dequeuing new events from the queue and delivering them to consumers.
 It also allows to decoupling delivery to different streams and to different consumers.</p>
 <p>Imagine a situation where one stream has 3 stream consumers and one of them is slow.
-If care not taken, it is possible that this slow consumer will impact agent&#39;s progress, slowing the consumption of other consumers of that stream, and even slowing the dequeuing and delivery of events for other streams.
+If care is not taken, it is possible that this slow consumer will impact the agent&#39;s progress, slowing the consumption of other consumers of that stream, and even slowing the dequeuing and delivery of events for other streams.
 To prevent that and allow maximum parallelism in the agent, we use <code>IQueueCache</code>.</p>
-<p><code>IQueueCache</code> buffers stream events and provides a way to the agent to deliver events to each consumer at its own pace.
+<p><code>IQueueCache</code> buffers stream events and provides a way for the agent to deliver events to each consumer at its own pace.
 The per-consumer delivery is implemented by the internal component called <code>IQueueCacheCursor</code>, which tracks per-consumer progress.
-That way each consumer receives events at its own pace: fast consumers receive events as quickly as they are dequeued from the queue, while slow consumers receive them later on.
+That way, each consumer receives events at its own pace: fast consumers receive events as quickly as they are dequeued from the queue, while slow consumers receive them later on.
 Once the message is delivered to all consumers, it can be deleted from the cache.</p>
 <h3 id="backpressurea-namebackpressurea">Backpressure<a name="Backpressure"></a></h3>
 <p>Backpressure in the Orleans Streaming Runtime applies in two places: <strong>bringing stream events from the queue to the agent</strong> and <strong>delivering the events from the agent to stream consumers</strong>.</p>
